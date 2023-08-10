@@ -1,0 +1,48 @@
+<p>product works!</p>
+{{title}}
+
+<!-- <table border="3">
+    <tr *ngFor="let p of products">
+        <td>{{p.id}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.picture}}</td>
+      <td>{{p.like}}</td>
+
+      <td><button (click)="likeproduct(p.id)">like</button></td>
+      <td><button (click)="BuyProduct(p.id)"[disabled]="p.quantity ==0" >Buy</button></td>
+      <td *ngIf="p.like>10">Best Product</td>
+    </tr>
+</table> -->
+
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">search</label>
+      <input type="text" class="form-control" name="search" [(ngModel)]="search" >
+      <div id="emailHelp" class="form-text">.</div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="searchProduct()" >search</button>
+  </form>
+  <div class ="row">
+    <div class="col-4" *ngFor="let p of products">
+      <div class="card" style="width: 18rem;">
+  <img src={{p.picture}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">article</h5>
+    <h5 class="card-title">{{p.title}}</h5>
+    <p class="card-text">Price : {{p.price}}</p>
+    <p class="card-text">Quantity : {{p.quantity}}</p>
+    <p class="card-text">Like : {{p.like}}</p>
+    <button class="btn btn-outline-success" (click)="BuyProduct(p.id)" [disabled]="p.quantity == 0">Buy</button>
+    <button class="btn btn-outline-success" (click)="likeproduct(p.id)" >Like</button>
+    <button class="btn btn-outline-success" [routerLink]="['/product',p.id]" >Details</button>
+    <button class="btn btn-outline-danger" (click)="deleteProduct" >Delete</button>
+  </div>
+</div>
+
+  </div>
+</div>
+</div>
+

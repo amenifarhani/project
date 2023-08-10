@@ -1,0 +1,39 @@
+<form #varform="ngForm" name="form" (ngSubmit)="submit()">
+  <div class="mb-3">
+
+    <label  class="form-label">Title</label>
+    <input type="text" class="form-control" name="title" #vartitle="ngModel" [(ngModel)]="product.title" required minlength="3">
+    <div *ngIf="vartitle.touched && vartitle.invalid">
+    <div *ngIf="vartitle.errors ?.['required']">Title is required</div>
+    <div *ngIf="vartitle.errors ?.['minlength']"> Title must have minimum trois caract</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">price</label>
+    <input type="number" class="form-control" name ="price" #varprice="ngModel" [(ngModel)]="product.price" required min="1">
+    <div *ngIf="varprice.touched && varprice.invalid">
+    <div *ngIf="varprice.errors ?.['required']">price  is required</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Quantity</label>
+    <input type="number" class="form-control" name ="quantity" #varquan="ngModel" [(ngModel)]="product.quantity"required min="1">
+    <div *ngIf="varquan.touched && varquan.invalid">
+    <div *ngIf="varquan.errors ?.['required']">Quantity is required</div>
+    <div *ngIf="varquan.errors ?.['min']">la quantite doit superieur a 0</div>
+  </div>
+  </div>
+  <div class="mb-3 ">
+    <label class="form-label">Picture</label>
+    <input type="text" class="form-control" name ="picture" #varpic="ngModel" [(ngModel)]="product.picture" required>
+    <div *ngIf="varpic.touched && varpic.invalid">
+    <div >">picture is required</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="varform.invalid">Submit</button>
+</form>
+{{product.title}}
+{{product.price}}
+{{product.quantity}}
+{{product.picture}}
